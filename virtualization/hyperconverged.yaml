@@ -9,4 +9,3 @@ spec:
   bareMetalPlatform: true
   featureGates:
     hotplugVolumes: true
-  BareMetalPlatform: false
