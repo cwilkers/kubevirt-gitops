@@ -1,3 +1,4 @@
 resources:
 - operatorgroup.yaml
 - subscription.yaml
+- hyperconverged.yaml
