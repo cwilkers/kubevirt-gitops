@@ -6,6 +6,19 @@ metadata:
   annotations:
     deployOVS: 'false'
 spec:
-  bareMetalPlatform: true
+  liveMigrationConfig:
+    bandwidthPerMigration: 64Mi
+    completionTimeoutPerGiB: 800
+    parallelMigrationsPerCluster: 5
+    parallelOutboundMigrationsPerNode: 2
+    progressTimeout: 150
+  certConfig:
+    ca:
+      duration: 48h0m0s
+      renewBefore: 24h0m0s
+    server:
+      duration: 24h0m0s
+      renewBefore: 12h0m0s
   featureGates:
-    hotplugVolumes: true
+    sriovLiveMigration: false
+    withHostPassthroughCPU: false
