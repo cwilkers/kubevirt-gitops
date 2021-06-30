@@ -4,6 +4,8 @@ kind: OperatorGroup
 metadata:
   name: openshift-cnv
   namespace: openshift-cnv
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   targetNamespaces:
   - openshift-cnv

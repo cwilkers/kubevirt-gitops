@@ -5,6 +5,7 @@ metadata:
   name: kubevirt-hyperconverged
   annotations:
     deployOVS: 'false'
+    argocd.argoproj.io/sync-wave: "4"
 spec:
   liveMigrationConfig:
     bandwidthPerMigration: 64Mi

@@ -4,6 +4,8 @@ kind: Subscription
 metadata:
   name: kubevirt-hyperconverged
   namespace: openshift-cnv
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   channel: stable
   installPlanApproval: Automatic
