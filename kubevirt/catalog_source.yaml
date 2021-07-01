@@ -1,0 +1,11 @@
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  name: hco-unstable-catalog-source
+  namespace: openshift-marketplace
+spec:
+  sourceType: grpc
+  image: quay.io/kubevirt/hyperconverged-cluster-index:1.5.0-unstable
+  displayName: Kubevirt Hyperconverged Cluster Operator
+  publisher: Kubevirt Project
