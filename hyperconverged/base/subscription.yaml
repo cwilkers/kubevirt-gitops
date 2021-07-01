@@ -4,7 +4,7 @@ metadata:
   name: hco-operatorhub
 spec:
   source: kubevirt-hyperconverged
-  sourceNamespace: openshift-marketplace
+  sourceNamespace: kubevirt-hyperconverged
   name: community-kubevirt-hyperconverged
   startingCSV: kubevirt-hyperconverged-operator.v1.5.0
   channel: "1.5.0"
