@@ -1,0 +1,4 @@
+namespace: openshift-virtualization-os-images
+resources:
+- fedora.yaml
+- centos8.yaml
