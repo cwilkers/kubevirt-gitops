@@ -1,9 +1,10 @@
 #!/bin/bash
+NAMESPACE=${1:-kubevirt-hyperconverged}
 
-oc create ns openshift-cnv
+oc create ns ${NAMESPACE}
 oc adm policy add-role-to-user cluster-admin \
   system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller \
-  -n openshift-cnv
+  -n ${NAMESPACE}
 
 if [ ! -f repositories.yaml ]
 then
