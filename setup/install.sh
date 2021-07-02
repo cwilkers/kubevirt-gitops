@@ -9,7 +9,7 @@ oc adm policy add-role-to-user cluster-admin \
 if [ ! -f repositories.yaml ]
 then
     # Install repositories in to argocd config map
-    GITREPO=$(git remote -v | awk -F '[: ]' '/origin.*push/ {print $2}')
+    GITREPO=$(git remote -v | awk -F '[:/ ]' '/origin.*push/ {print $(NF-2) "/" $(NF-1)}')
     cat > repositories.yaml <<END
  - type: git
    url: https://github.com/${GITREPO}
