@@ -1,4 +1,4 @@
-namespace: openshift-virtualization-os-images
+namespace: fedora
 bases:
 - ../datavolumes
 resources:
