@@ -1,4 +1,5 @@
 namespace: openshift-virtualization-os-images
+bases:
+- ../datavolumes
 resources:
-- ../datavolumes/fedora.yaml
 - fedora.yaml
