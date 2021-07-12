@@ -1,5 +1,4 @@
 bases:
 - ../datavolumes
-namespace: fedora
 resources:
 - fedora.yaml
