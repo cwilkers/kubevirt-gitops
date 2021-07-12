@@ -1,2 +1,4 @@
+bases:
+- ../datavolumes
 resources:
 - fedora.yaml
