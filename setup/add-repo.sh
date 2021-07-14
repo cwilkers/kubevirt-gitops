@@ -1,18 +1,15 @@
 #!/bin/bash
-NAMESPACE=${1:-kubevirt-hyperconverged}
+ARGO_NS=openshift-gitops
+ARGO_CR=openshift-gitops
 
-oc create ns ${NAMESPACE}
-oc adm policy add-role-to-user cluster-admin \
-  system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller \
-  -n ${NAMESPACE}
-
+# Create repositories entry in ArgoCD configuration Custom Resource
 if [ ! -f repositories.yaml ]
 then
     # Install repositories in to argocd config map
     GITREPO=$(git remote -v | awk -F '[:/ ]' '/origin.*push/ {print $(NF-2) "/" $(NF-1)}')
     cat > repositories.yaml <<END
- - type: git
-   url: https://github.com/${GITREPO}
+- type: git
+  url: https://github.com/${GITREPO}
 END
 fi
 
