@@ -5,7 +5,7 @@ metadata:
   namespace: openshift-gitops
 spec:
   destination:
-    namespace:
+    namespace: openshift-virtualization-os-images
     server: https://kubernetes.default.svc
   project: default
   source:
