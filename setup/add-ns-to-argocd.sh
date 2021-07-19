@@ -1,9 +1,12 @@
 #!/bin/bash
 NAMESPACE=${1:-default}
 
-A=($(kubectl get argocd -A | tail -n 1) )
-ARGO_NS=${A[0]}
-ARGO_CR=${A[1]}
+if [[ -z ${ARGO_NS:+isset} ]]
+then
+  A=($(kubectl get argocd -A | tail -n 1) )
+  ARGO_NS=${A[0]}
+  ARGO_CR=${A[1]}
+fi
 
 echo Adding argocd admin in $NAMESPACE
 oc adm policy add-role-to-user cluster-admin \
