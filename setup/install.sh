@@ -29,3 +29,4 @@ ${MYPATH}/add-ns-to-argocd.sh $MYNS
 
 ${MYPATH}/add-repo.sh
 
+kubectl apply -f <(${MYPATH}/build-resourcecustomizations.sh)

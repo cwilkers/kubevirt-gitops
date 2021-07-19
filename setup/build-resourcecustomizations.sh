@@ -1,8 +1,11 @@
 #!/bin/bash
 
-A=($(kubectl get argocd -A | tail -n 1) )
-ARGO_NS=${A[0]}
-ARGO_CR=${A[1]}
+if [[ -z ${ARGO_NS:+isset} ]]
+then
+    A=($(kubectl get argocd -A | tail -n 1) )
+    ARGO_NS=${A[0]}
+    ARGO_CR=${A[1]}
+fi
 
 cat <<EOF
 apiVersion: argoproj.io/v1alpha1

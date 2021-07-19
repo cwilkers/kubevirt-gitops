@@ -1,6 +1,10 @@
 #!/bin/bash
-ARGO_NS=openshift-gitops
-ARGO_CR=openshift-gitops
+
+if [[ -z ${ARGO_NS:+isset} ]]
+then
+  A=($(kubectl get argocd -A | tail -n 1) )
+  ARGO_NS=${A[0]}
+fi
 
 # Create repositories entry in ArgoCD configuration Custom Resource
 if [ ! -f repositories.yaml ]
@@ -13,5 +17,5 @@ then
 END
 fi
 
-oc -n openshift-gitops create cm argocd-cm --from-file=repositories=repositories.yaml --dry-run=client -o yaml | oc apply -f -
+oc -n ${ARGO_NS} create cm argocd-cm --from-file=repositories=repositories.yaml --dry-run=client -o yaml | oc apply -f -
 
