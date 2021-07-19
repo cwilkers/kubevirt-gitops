@@ -4,10 +4,6 @@ A=($(kubectl get argocd -A | tail -n 1) )
 ARGO_NS=${A[0]}
 ARGO_CR=${A[1]}
 
-
-DV_YAML=$(jj)
-VM_YAML=$(sed 's/^/        /' virtualmachines.health.lua)
-
 cat <<EOF
 apiVersion: argoproj.io/v1alpha1
 kind: ArgoCD
