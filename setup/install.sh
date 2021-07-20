@@ -11,7 +11,7 @@ export ARGO_CR=${A[1]}
 
 kubectl get ns ${IMAGE_NS} >& /dev/null
 EXISTS=$?
-if [ "$EXISTS" != "0"]
+if [ "$EXISTS" != "0" ]
 then
     kubectl create ns ${IMAGE_NS}
 fi
