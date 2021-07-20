@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: fedora-dvtest
+  name: vms
   namespace: openshift-gitops
 spec:
   destination:
-    namespace:
+    namespace: kubevirt-gitops
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: vm-and-dvs
+    path: vms
     repoURL: https://github.com/cwilkers/kubevirt-gitops
     targetRevision: HEAD
   syncPolicy:
