@@ -1,2 +1,3 @@
 resources:
 - fedora.yaml
+- centos.yaml
