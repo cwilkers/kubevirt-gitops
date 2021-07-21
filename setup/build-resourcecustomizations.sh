@@ -19,6 +19,6 @@ EOF
 
 for lua in *.lua
 do
-  echo $lua | awk -F_ '{print "    " $1 "/" $2 ": |\n      " $3 ": |" }'
+  echo $lua | awk -F_ '{print "    " $1 "/" $2 ":\n      " $3 ": |" }'
   sed 's/^/        /' $lua
 done
