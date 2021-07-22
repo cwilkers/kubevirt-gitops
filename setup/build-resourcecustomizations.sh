@@ -1,11 +1,14 @@
 #!/bin/bash
 
+MYPATH=$(cd "$(dirname "$0")" && pwd)
+
 if [[ -z ${ARGO_NS:+isset} ]]
 then
     A=($(kubectl get argocd -A | tail -n 1) )
     ARGO_NS=${A[0]}
     ARGO_CR=${A[1]}
 fi
+cd $MYPATH
 
 cat <<EOF
 apiVersion: argoproj.io/v1alpha1
