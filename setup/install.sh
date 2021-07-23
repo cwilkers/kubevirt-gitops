@@ -10,8 +10,8 @@ export ARGO_CR=${A[1]}
 
 for ns in ${IMAGE_NS} ${MYNS}
 do
-    kubectl get ns ${IMAGE_NS} >& /dev/null || kubectl create ns ${IMAGE_NS}
-    ${MYPATH}/add-ns-to-argocd.sh $IMAGE_NS
+    kubectl get ns ${ns} || kubectl create ns ${ns}
+    ${MYPATH}/add-ns-to-argocd.sh ${ns}
 done
 
 ${MYPATH}/add-repo.sh
