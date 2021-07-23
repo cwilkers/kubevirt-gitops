@@ -15,17 +15,17 @@ items:
           }
         ]
     labels:
-      app: centosvm
+      app: centos-gitops1
       vm.kubevirt.io/template: centos8-server-small
       vm.kubevirt.io/template.revision: "1"
       vm.kubevirt.io/template.version: v0.14.0
-    name: centosvm
+    name: centos-gitops1
   spec:
     dataVolumeTemplates:
     - apiVersion: cdi.kubevirt.io/v1beta1
       kind: DataVolume
       metadata:
-        name: centosvm
+        name: centos-gitops1
       spec:
         pvc:
           accessModes:
@@ -37,7 +37,7 @@ items:
           pvc:
             name: centos8
             namespace: openshift-virtualization-os-images
-    running: false
+    running: true
     template:
       metadata:
         annotations:
@@ -45,7 +45,7 @@ items:
           vm.kubevirt.io/os: centos8
           vm.kubevirt.io/workload: server
         labels:
-          kubevirt.io/domain: centosvm
+          kubevirt.io/domain: centos-gitops1
           kubevirt.io/size: small
       spec:
         domain:
@@ -57,7 +57,7 @@ items:
             disks:
             - disk:
                 bus: virtio
-              name: centosvm
+              name: centos-gitops1
             - disk:
                 bus: virtio
               name: cloudinitdisk
@@ -78,8 +78,8 @@ items:
         terminationGracePeriodSeconds: 180
         volumes:
         - dataVolume:
-            name: centosvm
-          name: centosvm
+            name: centos-gitops1
+          name: centos-gitops1
         - cloudInitNoCloud:
             userData: |-
               #cloud-config
