@@ -1,0 +1,19 @@
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  annotations:
+    cdi.kubevirt.io/storage.bind.immediate.requested: "true"
+    kubevirt.ui/provider: Microsoft
+  name: win2k19-install-iso
+spec:
+  pvc:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 6Gi
+    volumeMode: Filesystem
+  source:
+    http:
+      url: http://installhost.cnv.example.com/win2k19.iso
+
