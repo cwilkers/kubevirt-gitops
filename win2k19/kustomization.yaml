@@ -1,2 +1,3 @@
 resources:
 - install-iso.yaml
+- win-installation-scripts.yaml
