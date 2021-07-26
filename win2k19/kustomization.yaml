@@ -1,3 +1,5 @@
+namespace: kubevirt-gitops
 resources:
 - install-iso.yaml
 - win-installation-scripts.yaml
+- windows-install-sa.yaml
