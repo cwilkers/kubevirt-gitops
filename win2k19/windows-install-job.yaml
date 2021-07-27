@@ -8,6 +8,7 @@ spec:
   ttlSecondsAfterFinished: 600
   template:
     spec:
+      serviceAccountName: windows-install
       restartPolicy: Never
       containers:
       - name: ose-cli
