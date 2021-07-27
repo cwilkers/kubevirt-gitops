@@ -182,7 +182,7 @@ data:
     windows-install\n        workload.template.kubevirt.io/server: 'true'\n    spec:\n
     \     domain:\n        cpu:\n          cores: 2\n        devices:\n          disks:\n
     \         - name: windows-install-rootdisk\n            disk:\n              bus:
-    virtio\n          - name: win2k19-install-iso\n            bootOrder: 1\n            cdrom:\n
+    sata\n          - name: win2k19-install-iso\n            bootOrder: 1\n            cdrom:\n
     \             bus: sata\n          - name: windows-guest-tools\n            cdrom:\n
     \             bus: sata\n          - name: windows-install-scripts\n            cdrom:\n
     \             bus: sata\n          interfaces:\n          - name: default\n            model:
