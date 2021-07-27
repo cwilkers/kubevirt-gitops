@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: windows-install
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+spec:
+  ttlSecondsAfterFinished: 600
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: ose-cli
+        image: registry.redhat.io/openshift4/ose-cli
+        volumeMounts:
+        - name: windows-install-scripts
+          mountPath: /scripts
+        command: ["/bin/sh"]
+        args: ["/scripts/install.sh"]
+      volumes:
+      - name: windows-install-scripts
+        configMap:
+          name: windows-install-scripts
+

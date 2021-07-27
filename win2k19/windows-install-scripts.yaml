@@ -1,0 +1,204 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: windows-install-scripts
+data:
+  autounattend.xml: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<unattend xmlns=\"urn:schemas-microsoft-com:unattend\">\n
+    \   <settings pass=\"windowsPE\">\n        <component name=\"Microsoft-Windows-Setup\"
+    processorArchitecture=\"amd64\" publicKeyToken=\"31bf3856ad364e35\" language=\"neutral\"
+    versionScope=\"nonSxS\" xmlns:wcm=\"http://schemas.microsoft.com/WMIConfig/2002/State\"
+    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n            <UserData>\n
+    \               <AcceptEula>true</AcceptEula>\n                <Organization>local</Organization>\n
+    \               <FullName>user</FullName>\n            </UserData>\n            <DiskConfiguration>\n
+    \               <Disk wcm:action=\"add\">\n                    <CreatePartitions>\n
+    \                       <CreatePartition wcm:action=\"add\">\n                            <Order>1</Order>\n
+    \                           <Size>500</Size>\n                            <Type>Primary</Type>\n
+    \                       </CreatePartition>\n                        <CreatePartition
+    wcm:action=\"add\">\n\t\t\t    <Order>2</Order>\n\t\t\t    <Extend>true</Extend>\n
+    \                           <Type>Primary</Type>\n                        </CreatePartition>\n
+    \                   </CreatePartitions>\n                    <ModifyPartitions>\n
+    \                       <ModifyPartition wcm:action=\"add\">\n                            <Format>NTFS</Format>\n
+    \                           <Label>System</Label>\n                            <PartitionID>1</PartitionID>\n
+    \                           <TypeID>0x27</TypeID>\n\t\t\t    <Order>1</Order>\n
+    \                       </ModifyPartition>\n                        <ModifyPartition
+    wcm:action=\"add\">\n                            <Letter>C</Letter>\n                            <Order>2</Order>\n
+    \                           <PartitionID>2</PartitionID>\n                            <Format>NTFS</Format>\n
+    \                       </ModifyPartition>\n                    </ModifyPartitions>\n
+    \                   <DiskID>0</DiskID>\n                    <WillWipeDisk>true</WillWipeDisk>\n
+    \               </Disk>\n            </DiskConfiguration>\n            <ImageInstall>\n
+    \               <OSImage>\n                    <InstallFrom>\n                        <MetaData
+    wcm:action=\"add\">\n                            <Key>/IMAGE/INDEX</Key>\n                            <Value>2</Value>\n
+    \                       </MetaData>\n                    </InstallFrom>\n                    <InstallTo>\n
+    \                       <DiskID>0</DiskID>\n                        <PartitionID>2</PartitionID>\n
+    \                   </InstallTo>\n                </OSImage>\n            </ImageInstall>\n
+    \       </component>\n        <component name=\"Microsoft-Windows-International-Core-WinPE\"
+    processorArchitecture=\"amd64\" publicKeyToken=\"31bf3856ad364e35\" language=\"neutral\"
+    versionScope=\"nonSxS\" xmlns:wcm=\"http://schemas.microsoft.com/WMIConfig/2002/State\"
+    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n            <SetupUILanguage>\n
+    \               <UILanguage>en-us</UILanguage>\n                <WillShowUI>Always</WillShowUI>\n
+    \           </SetupUILanguage>\n            <InputLocale>en-us</InputLocale>\n
+    \           <SystemLocale>en-us</SystemLocale>\n            <UILanguage>en-us</UILanguage>\n
+    \           <UserLocale>en-us</UserLocale>\n        </component>\n        <component
+    name=\"Microsoft-Windows-PnpCustomizationsWinPE\" processorArchitecture=\"amd64\"
+    publicKeyToken=\"31bf3856ad364e35\" language=\"neutral\" versionScope=\"nonSxS\"
+    xmlns:wcm=\"http://schemas.microsoft.com/WMIConfig/2002/State\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n
+    \           <DriverPaths>\n                <PathAndCredentials wcm:keyValue=\"4b29ba63\"
+    wcm:action=\"add\">\n                    <Path>E:\\amd64\\2k19</Path>\n                </PathAndCredentials>\n
+    \               <PathAndCredentials wcm:keyValue=\"25fe51ea\" wcm:action=\"add\">\n
+    \                   <Path>E:\\NetKVM\\2k19\\amd64</Path>\n                </PathAndCredentials>\n
+    \           </DriverPaths>\n        </component>\n    </settings>\n    <settings
+    pass=\"oobeSystem\">\n        <component name=\"Microsoft-Windows-Shell-Setup\"
+    processorArchitecture=\"amd64\" publicKeyToken=\"31bf3856ad364e35\" language=\"neutral\"
+    versionScope=\"nonSxS\" xmlns:wcm=\"http://schemas.microsoft.com/WMIConfig/2002/State\"
+    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n            <UserAccounts>\n
+    \               <AdministratorPassword>\n                    <Value>QQBhADEAMgAzADQANQA2AEEAZABtAGkAbgBpAHMAdAByAGEAdABvAHIAUABhAHMAcwB3AG8AcgBkAA==</Value>\n
+    \                   <PlainText>false</PlainText>\n                </AdministratorPassword>\n\t
+    \   </UserAccounts>\n\t    \t<AutoLogon>\n                <Password>\n                    <Value>QQBhADEAMgAzADQANQA2AFAAYQBzAHMAdwBvAHIAZAA=</Value>\n
+    \                   <PlainText>false</PlainText>\n                </Password>\n
+    \               <Enabled>true</Enabled>\n                <LogonCount>1</LogonCount>\n
+    \               <Username>Administrator</Username>\n\t\t</AutoLogon>\n            <FirstLogonCommands>\n
+    \               <SynchronousCommand wcm:action=\"add\">\n\t            <CommandLine>powershell
+    -noexit f:\\post-install.ps1\n\t\t    </CommandLine>\n                    <RequiresUserInput>false</RequiresUserInput>\n
+    \                   <Order>1</Order>\n\t\t    <Description>Post Installation Script</Description>\n\t\t</SynchronousCommand>\n
+    \           </FirstLogonCommands>\n        </component>\n</settings>\n    <cpi:offlineImage
+    cpi:source=\"wim:c:/users/administrator/documents/install.wim#Windows Server 2019
+    SERVERSTANDARD\" xmlns:cpi=\"urn:schemas-microsoft-com:cpi\" />\n</unattend>\n"
+  clone-boot-source.yaml: |
+    apiVersion: cdi.kubevirt.io/v1beta1
+    kind: DataVolume
+    metadata:
+      name: win2k19
+      namespace: openshift-virtualization-os-images
+    spec:
+      source:
+        pvc:
+          namespace: kubevirt-gitops
+          name: windows-install-rootdisk
+      pvc:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 12Gi
+  install.sh: |
+    #!/bin/sh
+
+    cd /scripts
+
+    echo "Starting install script"
+
+    oc apply -f windows-install-vm.yaml
+    echo "Applied VM, waiting for VM to start"
+
+    sleep 5
+
+    vm_ready=$(oc get vm windows-install -o jsonpath='{.status.ready}')
+    while [ "$vm_ready" != "true" ]
+    do
+        sleep 10
+        vm_ready=$(oc get vm windows-install -o jsonpath='{.status.ready}')
+    done
+
+    echo "VM is started"
+
+    vmi_phase=$(oc get vmi windows-install -o jsonpath='{.status.phase}')
+
+    while [ "$vmi_phase" != "Succeeded" ]
+    do
+        sleep 30
+        vmi_phase=$(oc get vmi windows-install -o jsonpath='{.status.phase}')
+    done
+
+    echo "VM has finished installing"
+
+    oc apply -f clone-boot-source.yaml
+
+    echo "Applied DataVolume to clone boot source image"
+
+    sleep 5
+
+    dv_phase=$(oc -n openshift-virtualization-os-images get dv win2k19 -o jsonpath='{.status.phase}')
+
+    while [ "$dv_phase" != "Succeeded" ]
+    do
+        sleep 10
+        dv_phase=$(oc -n openshift-virtualization-os-images get dv win2k19 -o jsonpath='{.status.phase}')
+        echo $dv_phase
+    done
+
+    echo "Cleaning up"
+
+    oc delete -f windows-install-vm.yaml
+  post-install.ps1: |
+    # Create Workdir
+    $BasePath = "C:\Windows\Temp\Install"
+    New-item $BasePath -itemtype directory
+
+    # Enable RDP
+    Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -value 0
+    Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
+
+    # Add RedHat to Trusted Publisher
+    $CertName = "balloon.cer"
+    $ExportCert = Join-Path $BasePath -ChildPath $CertName
+
+    $Cert = (Get-AuthenticodeSignature "e:\Balloon\2k19\amd64\balloon.sys").SignerCertificate
+    $ExportType = [System.Security.Cryptography.X509Certificates.X509ContentType]::Cert
+
+    [System.IO.File]::WriteAllBytes($ExportCert, $Cert.Export($ExportType))
+    Import-Certificate -FilePath $ExportCert -CertStoreLocation Cert:\LocalMachine\TrustedPublisher
+
+    # install Guest Agent
+    msiexec /i e:\virtio-win-gt-x64.msi /qn /passive
+
+    # install Qemu Tools (Drivers)
+    msiexec /i e:\guest-agent\qemu-ga-x86_64.msi /qn /passive
+
+    # Fix Guest Agent
+    Start-Process  E:\vioserial\2k19\amd64\vioser.inf -Verb install
+
+    # Get Cloud-init
+    Set-ExecutionPolicy Unrestricted
+    $Cloudinit = "CloudbaseInitSetup_Stable_x64.msi"
+    $CloutinitLocaion =  Join-Path -Path "C:\windows\temp\" -ChildPath $Cloudinit
+    invoke-webrequest https://www.cloudbase.it/downloads/$Cloudinit -o $CloutinitLocaion
+
+    cmd /C start /wait msiexec /i $CloutinitLocaion /qn
+
+    # Cleanup
+    Remove-item $BasePath -Recurse
+
+    # Remove AutoLogin
+    reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v AutoAdminLogon /t REG_SZ /d 0 /f
+
+    # Run Sysprep and Shutdown
+    #
+    #Push-Location "C:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\"
+    #C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown /unattend:Unattend.xml
+
+    cmd /C 'cd "C:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\" && C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown /unattend:Unattend.xml'
+  windows-install-vm.yaml: "apiVersion: kubevirt.io/v1\nkind: VirtualMachine\nmetadata:\n
+    \ annotations:\n    name.os.template.kubevirt.io/win2k19: Microsoft Windows Server
+    2019\n    description: windows-install\n  labels:\n    app: windows-install\nspec:\n
+    \ runStrategy: RerunOnFailure\n  template:\n    metadata:\n      labels:\n        kubevirt.io/domain:
+    windows-install\n        vm.kubevirt.io/name: windows-install\n        workload.template.kubevirt.io/server:
+    'true'\n    spec:\n      domain:\n        cpu:\n          cores: 2\n        devices:\n
+    \         disks:\n          - name: windows-install-rootdisk\n            disk:\n
+    \             bus: virtio\n          - name: win2k19-install-iso\n            bootOrder:
+    1\n            cdrom:\n              bus: sata\n          - name: windows-guest-tools\n
+    \           cdrom:\n              bus: sata\n          - name: windows-install-scripts\n
+    \           cdrom:\n              bus: sata\n          interfaces:\n          -
+    name: default\n            model: virtio\n            masquerade: {}\n          networkInterfaceMultiqueue:
+    true\n          rng: {}\n        machine:\n          type: pc-q35-rhel8.4.0\n
+    \       resources:\n          requests:\n            memory: 4Gi\n      evictionStrategy:
+    LiveMigrate\n      hostname: windows-install\n      networks:\n      - name: default\n
+    \       pod: {}\n      terminationGracePeriodSeconds: 180\n      volumes:\n      -
+    name: windows-install-rootdisk \n        dataVolume:\n          name: windows-install-rootdisk\n
+    \     - name: win2k19-install-iso\n        persistentVolumeClaim:\n          claimName:
+    win2k19-install-iso\n      - name: windows-guest-tools\n        containerDisk:\n
+    \         image: registry.redhat.io/container-native-virtualization/virtio-win:v2.6.0\n
+    \     - name: windows-install-scripts\n        configMap:\n          name: windows-install-scripts\n
+    \ dataVolumeTemplates:\n  - metadata:\n      name: windows-install-rootdisk\n
+    \   spec:\n      pvc:\n        accessModes:\n        - ReadWriteOnce\n        resources:\n
+    \         requests:\n            storage: 12Gi\n      source:\n        blank:
+    {}\n"
