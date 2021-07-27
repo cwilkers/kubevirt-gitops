@@ -203,3 +203,4 @@ kind: ConfigMap
 metadata:
   creationTimestamp: null
   name: windows-install-scripts
+  namespace: kubevirt-gitops

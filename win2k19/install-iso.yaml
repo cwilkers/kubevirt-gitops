@@ -5,6 +5,7 @@ metadata:
     cdi.kubevirt.io/storage.bind.immediate.requested: "true"
     kubevirt.ui/provider: Microsoft
   name: win2k19-install-iso
+  namespace: kubevirt-gitops
 spec:
   pvc:
     accessModes:
