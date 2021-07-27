@@ -1,7 +1,4 @@
 apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: windows-install-scripts
 data:
   autounattend.xml: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<unattend xmlns=\"urn:schemas-microsoft-com:unattend\">\n
     \   <settings pass=\"windowsPE\">\n        <component name=\"Microsoft-Windows-Setup\"
@@ -179,26 +176,30 @@ data:
     cmd /C 'cd "C:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\" && C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown /unattend:Unattend.xml'
   windows-install-vm.yaml: "apiVersion: kubevirt.io/v1\nkind: VirtualMachine\nmetadata:\n
     \ annotations:\n    name.os.template.kubevirt.io/win2k19: Microsoft Windows Server
-    2019\n    description: windows-install\n  labels:\n    app: windows-install\nspec:\n
-    \ runStrategy: RerunOnFailure\n  template:\n    metadata:\n      labels:\n        kubevirt.io/domain:
-    windows-install\n        vm.kubevirt.io/name: windows-install\n        workload.template.kubevirt.io/server:
-    'true'\n    spec:\n      domain:\n        cpu:\n          cores: 2\n        devices:\n
-    \         disks:\n          - name: windows-install-rootdisk\n            disk:\n
-    \             bus: virtio\n          - name: win2k19-install-iso\n            bootOrder:
-    1\n            cdrom:\n              bus: sata\n          - name: windows-guest-tools\n
-    \           cdrom:\n              bus: sata\n          - name: windows-install-scripts\n
-    \           cdrom:\n              bus: sata\n          interfaces:\n          -
-    name: default\n            model: virtio\n            masquerade: {}\n          networkInterfaceMultiqueue:
-    true\n          rng: {}\n        machine:\n          type: pc-q35-rhel8.4.0\n
-    \       resources:\n          requests:\n            memory: 4Gi\n      evictionStrategy:
-    LiveMigrate\n      hostname: windows-install\n      networks:\n      - name: default\n
-    \       pod: {}\n      terminationGracePeriodSeconds: 180\n      volumes:\n      -
-    name: windows-install-rootdisk \n        dataVolume:\n          name: windows-install-rootdisk\n
-    \     - name: win2k19-install-iso\n        persistentVolumeClaim:\n          claimName:
-    win2k19-install-iso\n      - name: windows-guest-tools\n        containerDisk:\n
-    \         image: registry.redhat.io/container-native-virtualization/virtio-win:v2.6.0\n
+    2019\n    description: windows-install\n  labels:\n    app: windows-install\n
+    \ name: windows-install\nspec:\n  runStrategy: RerunOnFailure\n  template:\n    metadata:\n
+    \     labels:\n        kubevirt.io/domain: windows-install\n        vm.kubevirt.io/name:
+    windows-install\n        workload.template.kubevirt.io/server: 'true'\n    spec:\n
+    \     domain:\n        cpu:\n          cores: 2\n        devices:\n          disks:\n
+    \         - name: windows-install-rootdisk\n            disk:\n              bus:
+    virtio\n          - name: win2k19-install-iso\n            bootOrder: 1\n            cdrom:\n
+    \             bus: sata\n          - name: windows-guest-tools\n            cdrom:\n
+    \             bus: sata\n          - name: windows-install-scripts\n            cdrom:\n
+    \             bus: sata\n          interfaces:\n          - name: default\n            model:
+    virtio\n            masquerade: {}\n          networkInterfaceMultiqueue: true\n
+    \         rng: {}\n        machine:\n          type: pc-q35-rhel8.4.0\n        resources:\n
+    \         requests:\n            memory: 4Gi\n      evictionStrategy: LiveMigrate\n
+    \     hostname: windows-install\n      networks:\n      - name: default\n        pod:
+    {}\n      terminationGracePeriodSeconds: 180\n      volumes:\n      - name: windows-install-rootdisk
+    \n        dataVolume:\n          name: windows-install-rootdisk\n      - name:
+    win2k19-install-iso\n        persistentVolumeClaim:\n          claimName: win2k19-install-iso\n
+    \     - name: windows-guest-tools\n        containerDisk:\n          image: registry.redhat.io/container-native-virtualization/virtio-win:v2.6.0\n
     \     - name: windows-install-scripts\n        configMap:\n          name: windows-install-scripts\n
     \ dataVolumeTemplates:\n  - metadata:\n      name: windows-install-rootdisk\n
     \   spec:\n      pvc:\n        accessModes:\n        - ReadWriteOnce\n        resources:\n
     \         requests:\n            storage: 12Gi\n      source:\n        blank:
     {}\n"
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: windows-install-scripts

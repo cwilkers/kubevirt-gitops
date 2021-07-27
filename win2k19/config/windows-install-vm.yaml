@@ -6,6 +6,7 @@ metadata:
     description: windows-install
   labels:
     app: windows-install
+  name: windows-install
 spec:
   runStrategy: RerunOnFailure
   template:
