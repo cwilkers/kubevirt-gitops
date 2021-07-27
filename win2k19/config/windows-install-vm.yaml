@@ -23,7 +23,7 @@ spec:
           disks:
           - name: windows-install-rootdisk
             disk:
-              bus: virtio
+              bus: sata
           - name: win2k19-install-iso
             bootOrder: 1
             cdrom:
