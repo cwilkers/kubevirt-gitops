@@ -5,6 +5,5 @@ metadata:
   name: kubevirt-hyperconverged
   annotations:
     deployOVS: 'false'
-    argocd.argoproj.io/sync-wave: "4"
-    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
