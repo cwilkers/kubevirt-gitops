@@ -13,7 +13,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: ose-cli
-        image: registry.redhat.io/openshift4/ose-cli:v4.7.0
+        image: registry.redhat.io/openshift4/ose-cli:v4.8.0
         volumeMounts:
         - name: windows-install-scripts
           mountPath: /scripts
