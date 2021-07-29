@@ -1,4 +1,4 @@
 namespace: openshift-gitops
 resources:
-- datavolumes.yaml
-- vms.yaml
+- ../datavolumes/application.yaml
+- ../vms/application.yaml
