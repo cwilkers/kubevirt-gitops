@@ -119,7 +119,9 @@ data:
 
     my_app_name=$(oc get cm windows-install-scripts -o jsonpath='{.metadata.labels.app\.kubernetes\.io/instance}')
 
-    oc delete -n openshift-gitops app $my_app_name
+    oc delete -n openshift-gitops app $my_app_name --wait=false
+
+    echo "Finished"
   post-install.ps1: |
     # Create Workdir
     $BasePath = "C:\Windows\Temp\Install"
