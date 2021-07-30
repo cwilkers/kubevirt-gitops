@@ -39,6 +39,4 @@ oc delete -f windows-install-vm.yaml
 
 my_app_name=$(oc get cm windows-install-scripts -o jsonpath='{.metadata.labels.app\.kubernetes\.io/instance}')
 
-oc delete -n openshift-gitops app $my_app_name --wait=false
-
 echo "Finished"
