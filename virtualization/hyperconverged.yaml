@@ -3,6 +3,7 @@ kind: HyperConverged
 metadata:
   annotations:
     deployOVS: "false"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   labels:
     app: kubevirt-hyperconverged
   name: kubevirt-hyperconverged
