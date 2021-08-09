@@ -2,13 +2,11 @@
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
-  name: kubevirt-hyperconverged
+  name: hco-operatorhub
   namespace: openshift-cnv
-  annotations:
-    argocd.argoproj.io/sync-wave: "2"
 spec:
   channel: stable
-  installPlanApproval: Automatic
   name: kubevirt-hyperconverged
   source: redhat-operators
   sourceNamespace: openshift-marketplace
+  startingCSV: kubevirt-hyperconverged-operator.v4.8.0
