@@ -21,6 +21,8 @@ This script will:
   - Add the cluster-admin Role for the ArgoCD ServiceAccount in these Namespaces (required in OpenShift).
   - Add the current repository (taken from git remote) to ArgoCD's list of repositories.
 
+More in-depth descriptions may be found in the [README](setup/)
+
 ## Application Directories
 
 Other directories in this repository are designed to support Applications in ArgoCD. Each of these directories
