@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: virtualization
+  name: openshift-virtualization
   namespace: openshift-gitops
 spec:
   destination:
-    namespace: openshift-cnv
+    namespace: default
     server: https://kubernetes.default.svc
   project: default
   source:
