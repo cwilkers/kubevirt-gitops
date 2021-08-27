@@ -26,5 +26,5 @@ spec:
     parallelMigrationsPerCluster: 5
     parallelOutboundMigrationsPerNode: 2
     progressTimeout: 150
-  version: v4.8.0
+  version: v4.8.1
   workloads: {}
