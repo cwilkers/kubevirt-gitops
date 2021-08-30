@@ -14,6 +14,4 @@ do
     ${MYPATH}/add-ns-to-argocd.sh ${ns}
 done
 
-${MYPATH}/add-repo.sh
-
 kubectl apply -f <(${MYPATH}/build-resourcecustomizations.sh)

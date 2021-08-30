@@ -16,12 +16,6 @@ called cluster-admin to the ServiceAccount in each namespace required. Call
 this script with a namespace while logged in to an account with cluster-admin
 privileges to make the appropriate changes.
 
-**add-repo.sh**
-
-Run from within the git repository you would like to add to ArgoCD, and the
-"origin" remote will be added to ArgoCD as an https link. (Not for private
-repos.)
-
 **build-resourcecustomizations.sh**
 
 Builds and prints on stdout updates to the ArgoCD custom resource to include
