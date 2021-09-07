@@ -1,4 +1,3 @@
 resources:
-- gitops-rbac.yaml
 - fedora.yaml
 - centos.yaml
