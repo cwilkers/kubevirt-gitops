@@ -8,14 +8,6 @@ favor of OpenShift.
 
 This directory contains the following helpers:
 
-**add-ns-to-argocd.sh**
-
-In OpenShift, ArgoCD service accounts are not able to manage all resources in
-all namespaces. This access must be granted per namespace by assigning a Role
-called cluster-admin to the ServiceAccount in each namespace required. Call
-this script with a namespace while logged in to an account with cluster-admin
-privileges to make the appropriate changes.
-
 **build-resourcecustomizations.sh**
 
 Builds and prints on stdout updates to the ArgoCD custom resource to include
@@ -30,3 +22,6 @@ cdi.kubevirt.io_DataVolume_health.lua
 kubevirt.io_VirtualMachine_health.lua
 
 **install.sh**
+
+Runs any customizations required (this has changed as other customizations
+were worked around via Kubernetes resources instead of external commands)
