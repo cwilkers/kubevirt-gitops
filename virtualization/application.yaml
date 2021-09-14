@@ -16,3 +16,10 @@ spec:
     automated: {}
     syncOptions:
     - CreateNamespace=true
+  ignoreDifferences:
+  - group: apps
+    kind: HyperConverged
+    name: kubevirt-hyperconverged
+    namespace: openshift-cnv
+    jsonPointers:
+    - /spec/version
