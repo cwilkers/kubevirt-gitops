@@ -17,9 +17,7 @@ spec:
     syncOptions:
     - CreateNamespace=true
   ignoreDifferences:
-  - group: apps
-    kind: HyperConverged
-    name: kubevirt-hyperconverged
+  - kind: HyperConverged
     namespace: openshift-cnv
     jsonPointers:
     - /spec/version
