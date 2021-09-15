@@ -1,15 +1,17 @@
 hs = { status="Progressing", message="No status available"}
 if obj.status ~= nil then
-  if obj.status.created ~= nil then
-    hs.message="VMI Created"
-    if obj.status.conditions ~= nil then
-      for i, condition in ipairs(obj.status.conditions) do
-        if condition.type == "Ready" and condition.status == "True" then
-          hs.status = "Healthy"
-          hs.message = "Status is Ready"
-        end
-      end
+  if obj.status.printableStatus ~= nil then
+    hs.message = obj.status.printableStatus
+    if hs.message == "Running" then
+      hs.status = "Healthy"
+    elseif hs.message == "Stopped" or hs.message == "Paused" then
+      hs.status = "Suspended"
+    elseif hs.message == "Unknown" then
+      hs.status = "Degraded"
     end
+  elseif obj.status.ready ~= nil then
+    hs.status = "Healthy"
+    hs.message = "Running"
   end
 end
 return hs

@@ -1,12 +1,14 @@
 hs = { status="Progressing", message="No status available"}
 if obj.status ~= nil then
   if obj.status.phase ~= nil then
-    if obj.status.phase == "Succeeded" then
-      hs.status = "Healthy"
-    elseif obj.status.phase == "Failed" then
-      hs.status = "Degraded"
-    end
     hs.message = obj.status.phase
+    if hs.message == "Succeeded" then
+      hs.status = "Healthy"
+    elseif hs.message == "Failed" or hs.message == "Unknown" then
+      hs.status = "Degraded"
+    elseif hs.message == "Paused" then
+      hs.status = "Suspended"
+    end
   end
 end
 return hs
