@@ -1,5 +1,0 @@
-namespace: trident
-resources:
-- bundle.yaml
-- crds.yaml
-- tridentorchestrator_cr.yaml
