@@ -1,3 +1,0 @@
-namespace: testvm
-resources:
-- vm.yaml
