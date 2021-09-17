@@ -13,7 +13,7 @@ the default leans to OpenShift products and namespaces.
 Under the [setup](setup) directory, there are a number of scripts to
 help in an OpenShift GitOps deployment.
 
-To run everything, use `[install.sh](setup/install.sh)` without any arguments.
+To run everything, use [`install.sh`](setup/install.sh) without any arguments.
 This script will:
 
   - Discover the ArgoCD namespace and configuration CR names.
