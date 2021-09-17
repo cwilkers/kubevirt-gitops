@@ -66,6 +66,9 @@ data:
     metadata:
       name: win2k19
       namespace: openshift-virtualization-os-images
+      annotations:
+        cdi.kubevirt.io/storage.bind.immediate.requested: "true"
+        kubevirt.ui/provider: Microsoft
     spec:
       source:
         pvc:
