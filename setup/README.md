@@ -13,13 +13,10 @@ This directory contains the following helpers:
 Builds and prints on stdout updates to the ArgoCD custom resource to include
 health scripts (in Lua) for KubeVirt custom resources. This allows ArgoCD to
 better report the sync status of resources like DataVolumes and VMs that do
-not immediately become available. Expects `*.lua` scripts in the current 
+not immediately become available. Expects `*_health.lua` scripts in the current 
 directory with filenames in the form:
 
      <apiVersion (only the vendor part before the /)>_<Resource Name>_health.lua
-
-cdi.kubevirt.io_DataVolume_health.lua
-kubevirt.io_VirtualMachine_health.lua
 
 **install.sh**
 

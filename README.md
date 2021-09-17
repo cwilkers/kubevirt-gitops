@@ -17,9 +17,7 @@ To run everything, use [`install.sh`](setup/install.sh) without any arguments.
 This script will:
 
   - Discover the ArgoCD namespace and configuration CR names.
-  - Add namespaces needed for these examples, including kubevirt-gitops for examples from this repo.
-  - Add the cluster-admin Role for the ArgoCD ServiceAccount in these Namespaces (required in OpenShift).
-  - Add the current repository (taken from git remote) to ArgoCD's list of repositories.
+  - Install health check scripts that ArgoCD uses to better track status of custom resources.
 
 More in-depth descriptions may be found in the [README](setup/)
 
