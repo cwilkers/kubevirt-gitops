@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: datavolumes
-    repoURL: https://github.com/cwilkers/kubevirt-gitops
+    repoURL: https://github.com/RHsyseng/kubevirt-gitops.git
     targetRevision: HEAD
   syncPolicy:
     automated: {}
