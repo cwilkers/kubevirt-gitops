@@ -73,6 +73,6 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 12Gi
+            storage: 22Gi
       source:
         blank: {}
