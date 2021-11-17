@@ -79,7 +79,7 @@ data:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 12Gi
+            storage: 22Gi
   install.sh: |
     #!/bin/sh
 
@@ -194,7 +194,7 @@ data:
     \     - name: windows-install-scripts\n        configMap:\n          name: windows-install-scripts\n
     \ dataVolumeTemplates:\n  - metadata:\n      name: windows-install-rootdisk\n
     \   spec:\n      pvc:\n        accessModes:\n        - ReadWriteOnce\n        resources:\n
-    \         requests:\n            storage: 12Gi\n      source:\n        blank:
+    \         requests:\n            storage: 22Gi\n      source:\n        blank:
     {}\n"
 kind: ConfigMap
 metadata:
