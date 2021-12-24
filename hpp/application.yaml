@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hostpath-provisioner
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: hostpath-provisioner
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: hpp
+    repoURL: https://github.com/cwilkers/kubevirt-gitops.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=false
