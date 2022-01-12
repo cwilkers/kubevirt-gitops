@@ -2,10 +2,10 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: hostpath-provisioner
-  namespace: openshift-gitops
+  namespace: argocd
 spec:
   destination:
-    namespace: hostpath-provisioner
+    namespace: kubevirt-hostpath-provisioner
     server: https://kubernetes.default.svc
   project: default
   source:
@@ -15,4 +15,4 @@ spec:
   syncPolicy:
     automated: {}
     syncOptions:
-    - CreateNamespace=false
+    - CreateNamespace=true
