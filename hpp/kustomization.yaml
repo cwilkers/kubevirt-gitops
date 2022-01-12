@@ -3,6 +3,6 @@ kind: Kustomization
 
 resources:
   - namespace.yaml
-  - operator.yaml
-  - cr.yaml
+  - roles.yaml
   - sc.yaml
+  - daemonset.yaml
