@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cdi
+  namespace: argocd
+spec:
+  destination:
+    namespace: cdi
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: cdi
+    repoURL: https://github.com/cwilkers/kubevirt-gitops.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
