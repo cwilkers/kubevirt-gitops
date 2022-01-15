@@ -1,3 +1,4 @@
 namespace: kubevirt-os-images
 resources:
+- namespace.yaml
 - ../base
