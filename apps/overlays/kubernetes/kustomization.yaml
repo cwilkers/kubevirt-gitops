@@ -3,11 +3,10 @@ kind: Kustomization
 namespace: argocd
 
 resources:
-- ../../kubevirt.yaml
-- ../../hpp.yaml
-- ../../cdi.yaml
-- ../../datavolumes.yaml
-- ../../vms.yaml
+- ../../base/kubevirt.yaml
+- ../../base/hpp.yaml
+- ../../base/cdi.yaml
+- ../../base/
 
 patchesStrategicMerge:
 - datavolumes-application.yaml
