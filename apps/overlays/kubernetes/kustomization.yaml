@@ -3,9 +3,9 @@ kind: Kustomization
 namespace: argocd
 
 resources:
-- ../../base/kubevirt.yaml
-- ../../base/hpp.yaml
-- ../../base/cdi.yaml
+- kubevirt.yaml
+- hpp.yaml
+- cdi.yaml
 - ../../base/
 
 patchesStrategicMerge:
