@@ -1,14 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vms
+  name: kubevirt-gitops
+  namespace: openshift-gitops
 spec:
   destination:
-    namespace: kubevirt-gitops
+    namespace: openshift-gitops
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: vms/overlays/kubernetes
+    path: apps/overlays/openshift
     repoURL: https://github.com/cwilkers/kubevirt-gitops.git
     targetRevision: HEAD
   syncPolicy:

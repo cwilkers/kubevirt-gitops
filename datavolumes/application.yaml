@@ -2,17 +2,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: datavolumes
-  namespace: openshift-gitops
 spec:
   destination:
-    namespace: openshift-virtualization-os-images
+    namespace: kubevirt-os-images
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: datavolumes
-    repoURL: https://github.com/RHsyseng/kubevirt-gitops.git
+    path: datavolumes/overlays/kubernetes
+    repoURL: https://github.com/cwilkers/kubevirt-gitops.git
     targetRevision: HEAD
   syncPolicy:
     automated: {}
     syncOptions:
-    - CreateNamespace=false
+    - CreateNamespace=true

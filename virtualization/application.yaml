@@ -2,7 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: openshift-virtualization
-  namespace: openshift-gitops
 spec:
   destination:
     namespace: default
@@ -10,7 +9,7 @@ spec:
   project: default
   source:
     path: virtualization
-    repoURL: https://github.com/RHsyseng/kubevirt-gitops.git
+    repoURL: https://github.com/cwilkers/kubevirt-gitops.git
     targetRevision: HEAD
   syncPolicy:
     automated: {}

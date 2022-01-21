@@ -1,0 +1,11 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: datavolumes
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: openshift-virtualization-os-images
+  project: default
+  source:
+    path: datavolumes/overlays/openshift

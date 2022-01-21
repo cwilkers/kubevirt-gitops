@@ -1,0 +1,15 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: centos-gitops1
+spec:
+  dataVolumeTemplates:
+  - apiVersion: cdi.kubevirt.io/v1beta1
+    kind: DataVolume
+    metadata:
+      name: centos-gitops1
+    spec:
+      source:
+        pvc:
+          name: centos8
+          namespace: kubevirt-os-images

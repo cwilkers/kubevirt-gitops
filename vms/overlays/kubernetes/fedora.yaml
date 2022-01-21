@@ -1,0 +1,15 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: fedora-gitops1
+spec:
+  dataVolumeTemplates:
+  - apiVersion: cdi.kubevirt.io/v1beta1
+    kind: DataVolume
+    metadata:
+      name: fedora-gitops1
+    spec:
+      source:
+        pvc:
+          name: fedora
+          namespace: kubevirt-os-images
