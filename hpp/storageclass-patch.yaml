@@ -5,3 +5,5 @@ metadata:
   name: kubevirt-hostpath-provisioner
   annotations:
     storageclass.kubernetes.io/is-default-class: "true"
+provisioner: kubevirt.io.hostpath-provisioner
+volumeBindingMode: WaitForFirstConsumer
