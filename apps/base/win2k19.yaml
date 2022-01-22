@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: windows-install
   annotations:
-    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   destination:
     namespace: ""

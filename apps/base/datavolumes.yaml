@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: datavolumes
   annotations:
-    argocd.argoproj.io/sync-wave: "4"
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   destination:
     namespace: kubevirt-os-images

@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: cdi
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "-2"
 spec:
   destination:
     namespace: cdi
