@@ -5,4 +5,5 @@ resources:
 - https://raw.githubusercontent.com/kubevirt/hostpath-provisioner/main/deploy/kubevirt-hostpath-provisioner.yaml
 
 patchesStrategicMerge:
+- clusterrole-patch.yaml
 - storageclass-patch.yaml
