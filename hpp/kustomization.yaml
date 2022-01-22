@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - namespace.yaml
-  - roles.yaml
-  - sc.yaml
-  - daemonset.yaml
+- https://raw.githubusercontent.com/kubevirt/hostpath-provisioner/main/deploy/kubevirt-hostpath-provisioner.yaml
+
+patchesStrategicMerge:
+- storageclass-patch.yaml
