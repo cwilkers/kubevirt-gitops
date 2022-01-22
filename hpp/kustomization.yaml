@@ -5,5 +5,12 @@ resources:
 - https://raw.githubusercontent.com/kubevirt/hostpath-provisioner/main/deploy/kubevirt-hostpath-provisioner.yaml
 
 patchesStrategicMerge:
-- clusterrole-patch.yaml
 - storageclass-patch.yaml
+
+patchesJson6902:
+- target:
+    group: apps
+    version: rbac.authorization.k8s.io/v1beta1
+    kind: ClusterRole
+    name: kubevirt-hostpath-provisioner
+  path: clusterrole-patch.yaml
