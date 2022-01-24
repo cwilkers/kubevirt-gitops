@@ -3,9 +3,10 @@ kind: Kustomization
 namespace: argocd
 
 resources:
-- kubevirt.yaml
+- cert-manager.yaml
 - hpp.yaml
 - cdi.yaml
+- kubevirt.yaml
 - ../../base/
 
 patchesStrategicMerge:

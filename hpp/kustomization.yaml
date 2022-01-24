@@ -1,11 +1,13 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: hostpath-provisioner
 
 resources:
-- namespace.yaml
-- https://github.com/kubevirt/hostpath-provisioner/raw/main/deploy/csi/csi-driver-hostpath-provisioner.yaml
-- https://github.com/kubevirt/hostpath-provisioner/raw/main/deploy/csi/csi-kubevirt-hostpath-provisioner.yaml
-- https://github.com/kubevirt/hostpath-provisioner/raw/main/deploy/csi/csi-sc.yaml
+- https://raw.githubusercontent.com/kubevirt/hostpath-provisioner-operator/main/deploy/namespace.yaml
+- https://raw.githubusercontent.com/kubevirt/hostpath-provisioner-operator/main/deploy/webhook.yaml
+- https://raw.githubusercontent.com/kubevirt/hostpath-provisioner-operator/main/deploy/operator.yaml
+- https://github.com/kubevirt/hostpath-provisioner-operator/raw/main/deploy/hostpathprovisioner_cr.yaml
+- https://github.com/kubevirt/hostpath-provisioner-operator/raw/main/deploy/storageclass-wffc-csi.yaml
 
-  #patchesStrategicMerge:
-  #- storageclass-patch.yaml
+patchesStrategicMerge:
+- storageclass-patch.yaml

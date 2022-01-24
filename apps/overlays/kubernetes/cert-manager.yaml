@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: hostpath-provisioner
+  name: cert-manager
   annotations:
-    argocd.argoproj.io/sync-wave: "-3"
+    argocd.argoproj.io/sync-wave: "-4"
 spec:
   destination:
-    namespace: hostpath-provisioner
+    namespace: cert-manager
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: hpp
+    path: cert-manager
     repoURL: https://github.com/cwilkers/kubevirt-gitops.git
     targetRevision: HEAD
   syncPolicy:
