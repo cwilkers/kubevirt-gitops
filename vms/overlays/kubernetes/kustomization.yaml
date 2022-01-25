@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
 - ../../base
+- cdi-rbac.yaml
 
 patchesStrategicMerge:
 - fedora.yaml
