@@ -9,6 +9,12 @@ spec:
     metadata:
       name: fedora-gitops1
     spec:
+      pvc:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 30Gi
       source:
         pvc:
           name: fedora

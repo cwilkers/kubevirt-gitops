@@ -9,7 +9,14 @@ spec:
     metadata:
       name: centos-gitops1
     spec:
+      pvc:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 30Gi
       source:
         pvc:
           name: centos8
           namespace: kubevirt-os-images
+
