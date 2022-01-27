@@ -82,7 +82,7 @@ spec:
           userData: |-
             #cloud-config
             user: fedora
-            password: vr3x-xos0-gntb
+            password: devconf22
             chpasswd: { expire: False }
             ssh_authorized_keys:
             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCtvdYw+25qic4Fn8nsnKHQsRbB/ybxRDxPEMwURIBT5dnPfq1Dy4xZ+XmseZS9qqJwiHkilQU3s268bEios6cASa37XgfTb84ZdjWZa9WeBxCg267DZKAuwu+vzx3H4xCPxs79WJwVM2AtzaZi6j5KQcXqit1NDy8iK/0b4AhU5Vpr7hmhk8qD4xvn4wW6K5mi1jI6RUEyZZj8K+jvCItUEK+kKh/9sAOqPSY3qQxbadwVI6QoDC0e26H7gNhfEnP68Rv5/Pr5/DlpIv7APfpXKpgX583JdsFyhZsApxI9a363hNvfQ3ETz8r0qOEvs/ESyfvf8tlyc2/0phu0gp5I0uyEOpmH9C9Kb/i1FshaPRB8nrsDDhzxjMYS0EhdCdIHG1VB4SdANmXrECT/yR+1UCwuBq4x+z8UuHfNseYHzrj+mkLLAU9nD7gAsAGJCsXcoR5k58KA9xSSC0nyRC1fIeQ92dDEkW+tSSXoiGWMrVRaJI1E90E+pXAaB0bVVT8= fedora@fedora-gitops1
