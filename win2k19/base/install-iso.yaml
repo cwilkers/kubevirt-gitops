@@ -16,4 +16,4 @@ spec:
     volumeMode: Filesystem
   source:
     http:
-      url: http://installhost.cnv0.example.com:8080/win2k19.iso
+      url: http://installhost.example.com:8080/win2k19.iso
