@@ -4,3 +4,12 @@ resources:
 - windows-install-sa.yaml
 - windows-install-rbac.yaml
 - windows-install-job.yaml
+
+configMapGenerator:
+- name: windows-install-scripts
+  files:
+  - config/autounattend.xml
+  - config/install.sh
+  - config/post-install.ps1
+  - config/windows-install-vm.yaml
+  - config/clone-boot-source.yaml
