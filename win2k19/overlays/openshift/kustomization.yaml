@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+configMapGenerator:
+- name: windows-install-scripts
+  files:
+  - ../../config/autounattend.xml
+  - ../../config/install.sh
+  - ../../config/post-install.ps1
+  - ../../config/windows-install-vm.yaml
+  - ../../config/clone-boot-source.yaml
+
+resources:
+- ../../base
+- windows-install-rbac.yaml
+
