@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
 - datavolumes.yaml
 - vms.yaml
+- win2k19.yaml

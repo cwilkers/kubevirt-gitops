@@ -1,0 +1,7 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vms
+spec:
+  source:
+    path: vms/overlays/openshift
