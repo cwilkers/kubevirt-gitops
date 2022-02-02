@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: windows-install
+  name: win2k19
   annotations:
     argocd.argoproj.io/sync-wave: "3"
 spec:
