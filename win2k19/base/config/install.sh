@@ -3,10 +3,18 @@
 echo "Starting install script"
 cd /scripts
 
-IMAGES_NS=$(kubectl get ns | awk '/(kubevirt|openshift-virtualization)-os-images/ {print $1}')
 KC=kubectl
+${KC} get ns kubevirt-os-images >& /dev/null
+if [ $? == 0 ]
+then
+    IMAGES_NS=kubevirt-os-images
+else
+    IMAGES_NS=openshift-virtualization-os-images
+fi
 
-${KC} apply -f windows-install-vm.yaml
+MYCM=$(${KC} get configmap -o name | awk -F / '/windows-install-scripts/ { print $2 }')
+sed "s/WININST_CM/${MYCM}/" windows-install-vm.yaml | ${KC} apply -f -
+
 echo "Applied VM, waiting for VM to start"
 sleep 5
 vm_ready=$(${KC} get vm windows-install -o jsonpath='{.status.ready}')
