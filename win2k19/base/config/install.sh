@@ -12,7 +12,7 @@ else
     IMAGES_NS=openshift-virtualization-os-images
 fi
 
-MYCM=$(${KC} get configmap -o name | awk -F / '/windows-install-scripts/ { print $2 }')
+MYCM=$(${KC} get configmap -o name --sort-by=metadata.creationTimestamp | awk -F / '/windows-install-scripts/ {a=$2} END{ print a }')
 sed "s/WININST_CM/${MYCM}/" windows-install-vm.yaml | ${KC} apply -f -
 
 echo "Applied VM, waiting for VM to start"
