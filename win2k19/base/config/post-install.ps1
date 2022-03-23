@@ -29,7 +29,7 @@ Start-Process  E:\vioserial\2k19\amd64\vioser.inf -Verb install
 Set-ExecutionPolicy Unrestricted
 $Cloudinit = "CloudbaseInitSetup_Stable_x64.msi"
 $CloutinitLocaion =  Join-Path -Path "C:\windows\temp\" -ChildPath $Cloudinit
-invoke-webrequest https://www.cloudbase.it/downloads/$Cloudinit -o $CloutinitLocaion
+invoke-webrequest https://cloudbase.it/downloads/$Cloudinit -o $CloutinitLocaion
 
 cmd /C start /wait msiexec /i $CloutinitLocaion /qn
 

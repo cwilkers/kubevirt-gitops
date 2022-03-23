@@ -16,8 +16,8 @@
                             <Type>Primary</Type>
                         </CreatePartition>
                         <CreatePartition wcm:action="add">
-			    <Order>2</Order>
-			    <Extend>true</Extend>
+			                <Order>2</Order>
+			                <Extend>true</Extend>
                             <Type>Primary</Type>
                         </CreatePartition>
                     </CreatePartitions>
@@ -27,7 +27,7 @@
                             <Label>System</Label>
                             <PartitionID>1</PartitionID>
                             <TypeID>0x27</TypeID>
-			    <Order>1</Order>
+			                <Order>1</Order>
                         </ModifyPartition>
                         <ModifyPartition wcm:action="add">
                             <Letter>C</Letter>
