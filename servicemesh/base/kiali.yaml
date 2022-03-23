@@ -2,12 +2,14 @@
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
-  name: kubevirt-hyperconverged
-  namespace: openshift-cnv
+  labels:
+    operators.coreos.com/kiali-ossm.openshift-operators: ""
+  name: kiali-ossm
+  namespace: openshift-operators
 spec:
   channel: stable
   installPlanApproval: Automatic
-  name: kubevirt-hyperconverged
+  name: kiali-ossm
   source: redhat-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: kubevirt-hyperconverged-operator.v4.10.0
+  startingCSV: kiali-operator.v1.36.7

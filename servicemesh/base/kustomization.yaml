@@ -1,0 +1,7 @@
+resources:
+- elasticsearch.yaml
+- jaeger.yaml
+- kiali.yaml
+- rhossm.yaml
+- controlplane.yaml
+- bookinfo-ns.yaml
