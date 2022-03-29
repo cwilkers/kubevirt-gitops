@@ -25,6 +25,10 @@ msiexec /i e:\guest-agent\qemu-ga-x86_64.msi /qn /passive
 # Fix Guest Agent
 Start-Process  E:\vioserial\2k19\amd64\vioser.inf -Verb install
 
+# Enable Networking
+
+Enable-NetAdapter -Name "Ethernet*" -Confirm:$false
+
 # Get Cloud-init
 Set-ExecutionPolicy Unrestricted
 $Cloudinit = "CloudbaseInitSetup_Stable_x64.msi"
