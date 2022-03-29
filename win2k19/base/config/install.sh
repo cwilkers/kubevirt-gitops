@@ -13,6 +13,7 @@ else
 fi
 
 MYCM=$(${KC} get configmap -o name --sort-by=metadata.creationTimestamp | awk -F / '/windows-install-scripts/ {a=$2} END{ print a }')
+echo "Using ${MYCM}"
 sed "s/WININST_CM/${MYCM}/" windows-install-vm.yaml | ${KC} apply -f -
 
 echo "Applied VM, waiting for VM to start"
