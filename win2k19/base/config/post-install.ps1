@@ -25,17 +25,21 @@ msiexec /i e:\guest-agent\qemu-ga-x86_64.msi /qn /passive
 # Fix Guest Agent
 Start-Process  E:\vioserial\2k19\amd64\vioser.inf -Verb install
 
+# Enable SSH
+Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+Set-Service -Name sshd -StartupType 'Automatic'
+
 # Enable Networking
 
-Enable-NetAdapter -Name "Ethernet*" -Confirm:$false
+Enable-NetAdapter -Name "Ethernet" -Confirm:$false
 
 # Get Cloud-init
 Set-ExecutionPolicy Unrestricted
 $Cloudinit = "CloudbaseInitSetup_Stable_x64.msi"
-$CloutinitLocaion =  Join-Path -Path "C:\windows\temp\" -ChildPath $Cloudinit
-invoke-webrequest https://cloudbase.it/downloads/$Cloudinit -o $CloutinitLocaion
+$CloudinitLocation =  Join-Path -Path "C:\windows\temp\" -ChildPath $Cloudinit
+invoke-webrequest https://cloudbase.it/downloads/$Cloudinit -o $CloudinitLocation
 
-cmd /C start /wait msiexec /i $CloutinitLocaion /qn
+cmd /C start /wait msiexec /i $CloudinitLocation /qn
 
 # Cleanup
 Remove-item $BasePath -Recurse
