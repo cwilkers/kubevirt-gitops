@@ -34,12 +34,12 @@ Set-Service -Name sshd -StartupType 'Automatic'
 Enable-NetAdapter -Name "Ethernet" -Confirm:$false
 
 # Get Cloud-init
-Set-ExecutionPolicy Unrestricted
-$Cloudinit = "CloudbaseInitSetup_Stable_x64.msi"
-$CloudinitLocation =  Join-Path -Path "C:\windows\temp\" -ChildPath $Cloudinit
-invoke-webrequest https://cloudbase.it/downloads/$Cloudinit -o $CloudinitLocation
+#Set-ExecutionPolicy Unrestricted
+#$Cloudinit = "CloudbaseInitSetup_Stable_x64.msi"
+#$CloudinitLocation =  Join-Path -Path "C:\windows\temp\" -ChildPath $Cloudinit
+#invoke-webrequest https://cloudbase.it/downloads/$Cloudinit -o $CloudinitLocation
 
-cmd /C start /wait msiexec /i $CloudinitLocation /qn
+#cmd /C start /wait msiexec /i $CloudinitLocation /qn
 
 # Cleanup
 Remove-item $BasePath -Recurse
