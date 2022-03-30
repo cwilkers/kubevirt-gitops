@@ -11,7 +11,7 @@ spec:
     pvc:
       namespace: kubevirt-gitops
       name: windows-install-rootdisk
-  pvc:
+  storage: 
     accessModes:
     - ReadWriteOnce
     resources:

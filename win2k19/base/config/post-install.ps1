@@ -26,7 +26,7 @@ msiexec /i e:\guest-agent\qemu-ga-x86_64.msi /qn /passive
 Start-Process  E:\vioserial\2k19\amd64\vioser.inf -Verb install
 
 # Enable SSH
-Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+Add-WindowsCapability -Online -Name 'OpenSSH.Server~~~~0.0.1.0'
 Set-Service -Name sshd -StartupType 'Automatic'
 
 # Enable Networking
@@ -48,8 +48,5 @@ Remove-item $BasePath -Recurse
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v AutoAdminLogon /t REG_SZ /d 0 /f
 
 # Run Sysprep and Shutdown
-#
-#Push-Location "C:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\"
-#C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown /unattend:Unattend.xml
 
 cmd /C 'cd "C:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\" && C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown /unattend:Unattend.xml'
