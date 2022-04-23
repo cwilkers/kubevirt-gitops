@@ -14,7 +14,7 @@ $Cert = (Get-AuthenticodeSignature "e:\Balloon\2k19\amd64\balloon.sys").SignerCe
 $ExportType = [System.Security.Cryptography.X509Certificates.X509ContentType]::Cert
 
 [System.IO.File]::WriteAllBytes($ExportCert, $Cert.Export($ExportType))
-Import-Certificate -FilePath $ExportCert -CertStoreLocation Cert:\LocalMachine\TrustedPublisher
+Import-Certificate -FilePath $ExportCert -CertStoreLocation Cert:\LocalMachine\Trust
 
 # install Guest Agent
 msiexec /i e:\virtio-win-gt-x64.msi /qn /passive
@@ -36,10 +36,16 @@ Enable-NetAdapter -Name "Ethernet" -Confirm:$false
 # Get Cloud-init
 #Set-ExecutionPolicy Unrestricted
 #$Cloudinit = "CloudbaseInitSetup_Stable_x64.msi"
-#$CloudinitLocation =  Join-Path -Path "C:\windows\temp\" -ChildPath $Cloudinit
+#$CloudinitLocation =  Join-Path -Path $BasePath -ChildPath $Cloudinit
 #invoke-webrequest https://cloudbase.it/downloads/$Cloudinit -o $CloudinitLocation
 
 #cmd /C start /wait msiexec /i $CloudinitLocation /qn
+
+# Copy cloud-init configurations in from configmap
+
+$CloudinitConfDir = "C:\Program Files\Cloudbase Solutions\Cloudbase-Init/conf"
+
+Copy-Item -Path 'F:\cloud*.conf' -Destination $CloudinitConfDir\
 
 # Cleanup
 Remove-item $BasePath -Recurse
@@ -50,3 +56,4 @@ reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogo
 # Run Sysprep and Shutdown
 
 cmd /C 'cd "C:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\" && C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown /unattend:Unattend.xml'
+#cmd /C 'C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown'
