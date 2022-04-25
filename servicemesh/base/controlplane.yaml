@@ -25,3 +25,5 @@ spec:
       name: kiali
     grafana:
       enabled: true
+  security:
+    manageNetworkPolicy: false
