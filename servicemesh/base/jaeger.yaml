@@ -4,7 +4,7 @@ metadata:
   labels:
     operators.coreos.com/jaeger-product.openshift-operators: ""
   name: jaeger-product
-  namespace: openshift-operators
+  namespace: openshift-distributed-tracing
 spec:
   channel: stable
   installPlanApproval: Automatic

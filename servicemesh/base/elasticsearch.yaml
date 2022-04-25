@@ -15,11 +15,13 @@ apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
   name: "elasticsearch-operator"
-  namespace: "openshift-operators-redhat" 
+  namespace: "openshift-operators-redhat"
+  labels:
+    operators.coreos.com/elasticsearch-operator.openshift-operators-redhat: ""
 spec:
   channel: "stable-5.x" 
   installPlanApproval: "Automatic"
   source: "redhat-operators" 
   sourceNamespace: "openshift-marketplace"
   name: "elasticsearch-operator"
-  startingCSV: "elasticsearch-operator.5.3.5-20"
+  startingCSV: elasticsearch-operator.5.4.0-152

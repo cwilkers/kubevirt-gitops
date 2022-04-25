@@ -3,8 +3,6 @@ kind: Kustomization
 namespace: bookinfo
 
 resources:
-- ../base
+- https://raw.githubusercontent.com/Maistra/istio/maistra-2.1/samples/bookinfo/platform/kube/bookinfo.yaml
 - https://raw.githubusercontent.com/Maistra/istio/maistra-2.1/samples/bookinfo/networking/bookinfo-gateway.yaml
-
-patchesStrategicMerge:
-- rating.yaml
+- https://raw.githubusercontent.com/Maistra/istio/maistra-2.1/samples/bookinfo/networking/destination-rule-all.yaml
