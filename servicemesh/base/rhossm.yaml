@@ -6,6 +6,8 @@ metadata:
     operators.coreos.com/servicemeshoperator.openshift-operators: ""
   name: servicemeshoperator
   namespace: openshift-operators
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
 spec:
   channel: stable
   installPlanApproval: Automatic

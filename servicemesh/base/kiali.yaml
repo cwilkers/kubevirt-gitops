@@ -6,10 +6,12 @@ metadata:
     operators.coreos.com/kiali-ossm.openshift-operators: ""
   name: kiali-ossm
   namespace: openshift-operators
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   channel: stable
   installPlanApproval: Automatic
   name: kiali-ossm
   source: redhat-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: kiali-operator.v1.36.7
+  startingCSV: kiali-operator.v1.36.8
