@@ -34,6 +34,10 @@ do
 done
 
 echo "VM has finished installing"
+
+echo "Deleting old win2k19 dv if any"
+${KC} delete -n ${IMAGES_NS} datavolume win2k19
+
 ${KC} apply -n ${IMAGES_NS} -f clone-boot-source.yaml
 echo "Applied DataVolume to clone boot source image"
 
