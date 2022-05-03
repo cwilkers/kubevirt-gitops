@@ -14,3 +14,4 @@ configMapGenerator:
   - config/windows-install-vm.yaml
   - config/clone-boot-source.yaml
   - config/cloudbase-init-unattend.conf
+  - config/Unattend.xml
