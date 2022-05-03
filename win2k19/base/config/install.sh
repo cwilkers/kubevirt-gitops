@@ -55,4 +55,6 @@ ${KC} delete -f windows-install-vm.yaml
 
 my_app_name=$(${KC} get cm windows-install-scripts -o jsonpath='{.metadata.labels.app\.kubernetes\.io/instance}')
 
+oc delete datavolume win2k19-install-iso
+
 echo "Finished"
