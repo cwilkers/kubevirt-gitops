@@ -1,0 +1,7 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: win2k19
+spec:
+  source:
+    path: win2k19/overlays/openshift

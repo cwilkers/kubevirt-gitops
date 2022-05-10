@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: openshift-gitops
+
+resources:
+- ../../base/
+
+patchesStrategicMerge:
+- win2k19-application.yaml
