@@ -70,7 +70,7 @@ spec:
     spec:
       pvc:
         accessModes:
-        - ReadWriteOnce
+        - ReadWriteMany
         resources:
           requests:
             storage: 22Gi
