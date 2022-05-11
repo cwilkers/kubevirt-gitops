@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: openshift-gitops
 
 resources:
-- ../../base/
+- ../../base/windows
 
 patchesStrategicMerge:
 - win2k19-application.yaml
