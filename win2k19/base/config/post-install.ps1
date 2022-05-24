@@ -47,16 +47,16 @@ Start-Process  E:\vioserial\2k19\amd64\vioser.inf -Verb install
 $CloudinitConfDir = $BasePath
 
 Copy-Item -Path 'F:\cloudbase-init-unattend.conf' -Destination $CloudinitConfDir\
-Copy-Item -Path 'F:\Unattend.xml' -Destination $CloudinitConfDir\
+Copy-Item -Path 'F:\cb-Unattend.xml' -Destination $CloudinitConfDir\Unattend.xml
 
 # Cleanup
 #Remove-item $BasePath -Recurse
 
 # Remove AutoLogin
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v AutoAdminLogon /t REG_SZ /d 0 /f
+#reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v AutoAdminLogon /t REG_SZ /d 0 /f
 
 # Run Sysprep and Shutdown
 
 #cmd /C 'cd "C:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\" && C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown /unattend:Unattend.xml'
-cmd /C 'C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown'
+#cmd /C 'C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown'
 #Stop-Computer
