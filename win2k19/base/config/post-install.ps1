@@ -43,7 +43,8 @@ invoke-webrequest https://cloudbase.it/downloads/$Cloudinit -o $CloudinitLocatio
 
 # Copy cloud-init configurations in from configmap
 
-$CloudinitConfDir = "C:\Program Files\Cloudbase Solutions\Cloudbase-Init/conf"
+#$CloudinitConfDir = "C:\Program Files\Cloudbase Solutions\Cloudbase-Init/conf"
+$CloudinitConfDir = $BasePath
 
 Copy-Item -Path 'F:\cloudbase-init-unattend.conf' -Destination $CloudinitConfDir\
 Copy-Item -Path 'F:\Unattend.xml' -Destination $CloudinitConfDir\
@@ -57,4 +58,4 @@ reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogo
 # Run Sysprep and Shutdown
 
 #cmd /C 'cd "C:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\" && C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown /unattend:Unattend.xml'
-cmd /C 'C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown'
+#cmd /C 'C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown'
