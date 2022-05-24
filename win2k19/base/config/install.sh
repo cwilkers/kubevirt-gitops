@@ -14,6 +14,10 @@ fi
 
 MYCM=$(${KC} get configmap -o name --sort-by=metadata.creationTimestamp | awk -F / '/windows-install-scripts/ {a=$2} END{ print a }')
 echo "Using ${MYCM}"
+
+MYAPP=$(${KC} get cm ${MYCM} -o jsonpath='{.metadata.labels.app\.kubernetes\.io/instance}')
+echo "Building for ${MYAPP}"
+
 sed "s/WININST_CM/${MYCM}/" windows-install-vm.yaml | ${KC} apply -f -
 
 echo "Applied VM, waiting for VM to start"
@@ -53,7 +57,6 @@ done
 echo "Cleaning up"
 ${KC} delete -f windows-install-vm.yaml
 
-my_app_name=$(${KC} get cm windows-install-scripts -o jsonpath='{.metadata.labels.app\.kubernetes\.io/instance}')
 
 oc delete datavolume win2k19-install-iso
 
