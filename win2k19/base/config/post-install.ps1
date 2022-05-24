@@ -34,17 +34,17 @@ Start-Process  E:\vioserial\2k19\amd64\vioser.inf -Verb install
 #Enable-NetAdapter -Name "Ethernet" -Confirm:$false
 
 # Get Cloud-init
-#Set-ExecutionPolicy Unrestricted
-#$Cloudinit = "CloudbaseInitSetup_Stable_x64.msi"
-#$CloudinitLocation =  Join-Path -Path $BasePath -ChildPath $Cloudinit
-#invoke-webrequest https://cloudbase.it/downloads/$Cloudinit -o $CloudinitLocation
+Set-ExecutionPolicy Unrestricted
+$Cloudinit = "CloudbaseInitSetup_Stable_x64.msi"
+$CloudinitLocation =  Join-Path -Path $BasePath -ChildPath $Cloudinit
+invoke-webrequest https://cloudbase.it/downloads/$Cloudinit -o $CloudinitLocation
 
-#cmd /C start /wait msiexec /i $CloudinitLocation /qn
+cmd /C start /wait msiexec /i $CloudinitLocation /qn
 
 # Copy cloud-init configurations in from configmap
 
-#$CloudinitConfDir = "C:\Program Files\Cloudbase Solutions\Cloudbase-Init/conf"
-$CloudinitConfDir = $BasePath
+$CloudinitConfDir = "C:\Program Files\Cloudbase Solutions\Cloudbase-Init/conf"
+#$CloudinitConfDir = $BasePath
 
 Copy-Item -Path 'F:\cloudbase-init-unattend.conf' -Destination $CloudinitConfDir\
 Copy-Item -Path 'F:\cb-Unattend.xml' -Destination $CloudinitConfDir\Unattend.xml
@@ -57,6 +57,6 @@ Copy-Item -Path 'F:\cb-Unattend.xml' -Destination $CloudinitConfDir\Unattend.xml
 
 # Run Sysprep and Shutdown
 
-#cmd /C 'cd "C:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\" && C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown /unattend:Unattend.xml'
+cmd /C 'cd "C:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\" && C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown /unattend:Unattend.xml'
 #cmd /C 'C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown'
 #Stop-Computer
