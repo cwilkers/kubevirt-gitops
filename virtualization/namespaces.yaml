@@ -12,10 +12,4 @@ metadata:
   name: openshift-virtualization-os-images
   labels:
     argocd.argoproj.io/managed-by: openshift-gitops
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: kubevirt-gitops
-  labels:
-    argocd.argoproj.io/managed-by: openshift-gitops
+
