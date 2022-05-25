@@ -39,12 +39,12 @@ $Cloudinit = "CloudbaseInitSetup_Stable_x64.msi"
 $CloudinitLocation =  Join-Path -Path $BasePath -ChildPath $Cloudinit
 invoke-webrequest https://cloudbase.it/downloads/$Cloudinit -o $CloudinitLocation
 
-cmd /C start /wait msiexec /i $CloudinitLocation /qn
+#cmd /C start /wait msiexec /i $CloudinitLocation /qn
 
 # Copy cloud-init configurations in from configmap
 
-$CloudinitConfDir = "C:\Program Files\Cloudbase Solutions\Cloudbase-Init/conf"
-#$CloudinitConfDir = $BasePath
+#$CloudinitConfDir = "C:\Program Files\Cloudbase Solutions\Cloudbase-Init/conf"
+$CloudinitConfDir = $BasePath
 
 Copy-Item -Path 'F:\cloudbase-init-unattend.conf' -Destination $CloudinitConfDir\
 Copy-Item -Path 'F:\cb-Unattend.xml' -Destination $CloudinitConfDir\Unattend.xml
