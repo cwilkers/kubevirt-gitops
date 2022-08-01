@@ -74,5 +74,6 @@ spec:
         resources:
           requests:
             storage: 22Gi
+        volumeMode: Block
       source:
         blank: {}
