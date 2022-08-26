@@ -95,9 +95,15 @@
 		    </AutoLogon>
             <FirstLogonCommands>
                 <SynchronousCommand wcm:action="add">
+                    <CommandLine>powershell -ExecutionPolicy ByPass Invoke-Expression (Invoke-WebRequest -Uri http://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1)</CommandLine>
+                    <Order>1</Order>
+		            <Description>Enable Ansible remote management</Description>
+                    <RequiresUserInput>false</RequiresUserInput>
+		        </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
 	                <CommandLine>powershell -noexit f:\post-install.ps1</CommandLine>
                     <RequiresUserInput>false</RequiresUserInput>
-                    <Order>1</Order>
+                    <Order>2</Order>
 		            <Description>Post Installation Script</Description>
 		        </SynchronousCommand>
             </FirstLogonCommands>
