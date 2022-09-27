@@ -15,4 +15,4 @@ spec:
     volumeMode: Block
   source:
     http:
-      url: http://installhost.example.com:8080/images/bookinfo-rootdisk.raw.xz
+      url: http://installhost.example.com:8080/bookinfo-rootdisk.raw.xz
