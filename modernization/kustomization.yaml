@@ -1,0 +1,4 @@
+resources:
+- legacy-dv.yaml
+- legacy-vm.yaml
+- legacy-service.yaml

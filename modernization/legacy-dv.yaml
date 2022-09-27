@@ -1,0 +1,18 @@
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  annotations:
+    cdi.kubevirt.io/storage.bind.immediate.requested: "true"
+    kubevirt.ui/provider: fedora
+  name: bookinfo-rootdisk
+spec:
+  pvc:
+    accessModes:
+    - ReadWriteMany
+    resources:
+      requests:
+        storage: 30Gi
+    volumeMode: Block
+  source:
+    http:
+      url: http://installhost.example.com:8080/images/bookinfo-rootdisk.raw.xz
